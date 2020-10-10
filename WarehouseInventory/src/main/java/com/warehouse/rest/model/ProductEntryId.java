@@ -1,11 +1,6 @@
-package com.warehouse.web.model;
+package com.warehouse.rest.model;
 
 import java.io.Serializable;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 public class ProductEntryId implements Serializable
 {

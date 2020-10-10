@@ -1,7 +1,7 @@
-package com.warehouse.web;
+package com.warehouse.rest;
 
-import com.warehouse.web.model.*;
-import com.warehouse.web.json.*;
+import com.warehouse.rest.model.*;
+import com.warehouse.rest.json.*;
 
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.http.HttpStatus;
@@ -64,4 +64,10 @@ public class Controller
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    // @PostMapping("/product-entry")
+    // ResponseEntity<?> moveProductEntry(@Validated @RequestBody )
+    // {
+
+    // }
 }

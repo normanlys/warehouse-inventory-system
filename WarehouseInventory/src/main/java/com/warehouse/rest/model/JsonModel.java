@@ -1,4 +1,4 @@
-package com.warehouse.web.model;
+package com.warehouse.rest.model;
 
 import java.io.Serializable;
 
