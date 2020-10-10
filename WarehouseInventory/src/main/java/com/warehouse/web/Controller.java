@@ -52,7 +52,16 @@ public class Controller
 	@PutMapping("/product-entry")
     ResponseEntity<?> createProductEntry(@Validated @RequestBody ProductEntry productEntry)
     {
-        repository.save(productEntry);
+        ProductEntryId id = new ProductEntryId(productEntry.code, productEntry.location);
+        Optional<ProductEntry> existingEntry = repository.findById(id);
+        if (existingEntry.isPresent())
+        {
+            ProductEntry value = existingEntry.get();
+            value.weight += productEntry.weight;
+            repository.save(value);
+        } else {
+            repository.save(productEntry);
+        }
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

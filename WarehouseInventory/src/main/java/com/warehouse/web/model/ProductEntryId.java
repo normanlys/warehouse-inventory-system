@@ -7,13 +7,18 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
-@AllArgsConstructor
 public class ProductEntryId implements Serializable
 {
     private static final long serialVersionUID = -2045670449563157442L;
 
-    @NonNull
     public String code;
-    @NonNull
     public String location;
+
+    public ProductEntryId() {}
+    
+    public ProductEntryId(String code, String location)
+    {
+        this.code = code;
+        this.location = location;
+    }
 }
