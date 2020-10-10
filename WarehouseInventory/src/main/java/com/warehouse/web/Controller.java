@@ -47,7 +47,6 @@ public class Controller
         List<GetProductCountResponse> result = entries.stream()
             .map( e -> new GetProductCountResponse(e.location, e.weight))
             .collect(Collectors.toList());
-        System.out.print(entries.iterator().next().location);
         return ResponseEntity.ok().body(result);
     }
 
