@@ -1,4 +1,4 @@
-package com.warehouse.web;
+package com.warehouse.web.json;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ public class GetProductCountResponse implements Serializable
     public String location;
     public Integer weight;    
 
-    GetProductCountResponse(String location, Integer weight)
+    public GetProductCountResponse(String location, Integer weight)
     {
         this.location = location;
         this.weight = weight;

@@ -1,14 +1,13 @@
 package com.warehouse.web;
 
 import com.warehouse.web.model.*;
+import com.warehouse.web.json.*;
 
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import lombok.NonNull;
 
 import java.net.URI;
 import java.net.URISyntaxException;
