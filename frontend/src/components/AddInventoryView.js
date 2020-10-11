@@ -30,6 +30,9 @@ export default function AddInventoryView() {
         results.data.forEach(e => {
           if (e.weight && parseInt(e.weight) && e.name && e.code) {
             putProductEntry(e.code, location, e.name, parseInt(e.weight))
+              .then(() => {
+                alert('Successfully upload CSV')
+              })
               .catch(err => alert(err))
           } else {
             alert('Incorrect format or missing data')
