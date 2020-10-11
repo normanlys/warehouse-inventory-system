@@ -8,19 +8,13 @@ import MoveInventoryView from './components/MoveInventoryView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flex: 1,
-    padding:10,
-    alignItems: 'center',
-    justifyContent: 'space-between'
-  },
-  appBar: {
-    // theme.mixins.toolbar,
-  },
-  title: {
-    flexGrow: 1,
+    // flex: 1,
+    // alignItems: 'center',
+    // justifyContent: 'space-between'
   },
   container: {
-    padding: 10
+    paddingBottom: 10,
+    marginBottom: 99
   },
 }));
 
@@ -31,6 +25,8 @@ function App() {
     <div className={styles.root}>
       <Container style={styles.container}>
         <AddInventoryView />
+      </Container>
+      <Container style={styles.container}>
         <MoveInventoryView/>
       </Container>
       <Container>
