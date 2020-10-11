@@ -60,7 +60,21 @@ class RestApplicationTests {
 	};
 
 	@Test
-	public void getProductCount() throws Exception
+	public void getProductCount_Empty_Success() throws Exception
+	{
+		final String productCode = "p0";
+		MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/api/product-count/" + productCode).accept("application/json"))
+			.andExpect(status().isOk())
+			.andReturn();
+		
+		Gson gson = new Gson();
+		ProductCount[] actual = gson.fromJson(result.getResponse().getContentAsString(), ProductCount[].class);
+
+		assertEquals(0, actual.length);
+	}
+
+	@Test
+	public void getProductCount_TwoCounts_Success() throws Exception
 	{
 		final String productCode = "p0";
 		final String location0 = "loc0";
@@ -85,4 +99,6 @@ class RestApplicationTests {
 		assertEquals(1, actual[1].weight);
 		assertEquals(location1, actual[1].location);
 	}
+
+
 }
