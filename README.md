@@ -31,6 +31,14 @@ cd backend
 ./mvnw test
 ```
 
+To compile a jar file
+```
+cd backend
+./mvnw clean install
+cd target
+// jar file is here
+```
+
 # Assumptions
 
 Since the requirements are not perfectly specific, I have made the following assumptions based off my understanding of the use case:
@@ -67,6 +75,7 @@ Design and draft system specifications
 - Struggle with dependency injections for unit tests
 - Add backend unit tests
 - Gladly discovered GSON library
+- Add actuator for easier production management
 
 # Potential Improvements
 
@@ -84,3 +93,4 @@ Design and draft system specifications
     1.   all incoming requests and outgoing responses
     2.   all function calls
     3.   all database operations
+12.  Use Kotlin
