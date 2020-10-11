@@ -50,14 +50,14 @@ export default function CheckProductWeightView() {
   }
 
   return (
-    <Container>
+    <div>
       <TextField id="outlined-basic"
         label="Product Code"
         variant="outlined"
         onChange={handleProductCodeChange}
         onKeyDown={onEnter} />
 
-      <Button onClick={onCheckButtonClick}>
+      <Button variant="contained" onClick={onCheckButtonClick}>
         Check Product Weight
       </Button>
 
@@ -81,6 +81,6 @@ export default function CheckProductWeightView() {
           </TableBody>
         </Table>
       </TableContainer>
-    </Container>
+    </div>
   );
 }
