@@ -18,6 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Max;
 
 @RestController
 @RequestMapping("/api")
@@ -74,9 +75,35 @@ public class Controller
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    // @PostMapping("/product-entry")
-    // ResponseEntity<?> moveProductEntry(@Validated @RequestBody )
-    // {
+    @PostMapping("/product-entry")
+    ResponseEntity<?> moveProductEntry(@Valid @RequestBody MoveProductEntry moveEntry) throws Exception
+    {
+        ProductEntryId fromId = new ProductEntryId(moveEntry.code, moveEntry.fromLocation);
+        Optional<ProductEntry> fromEntry = repository.findById(fromId);
 
-    // }
+        ProductEntryId toId = new ProductEntryId(moveEntry.code, moveEntry.toLocation);
+        Optional<ProductEntry> toEntry = repository.findById(toId);
+
+        if (fromEntry.isPresent())
+        {
+            ProductEntry fromValue = fromEntry.get();
+            Integer diff = Math.min(moveEntry.weight, fromValue.weight);
+            fromValue.weight -= diff;
+            repository.save(fromValue);
+
+            if (toEntry.isPresent()) {
+                ProductEntry toValue = toEntry.get();
+                toValue.weight += diff;
+                repository.save(toValue);
+            } else {
+                ProductEntry newEntry = new ProductEntry(toId, fromValue.name, diff);
+                repository.save(newEntry);
+            }
+
+        } else {
+            return ResponseEntity.badRequest().body("Product not exist in fromLocation");
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
