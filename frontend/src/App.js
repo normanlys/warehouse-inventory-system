@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Container } from '@material-ui/core';
+import { Container, Divider } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import CheckProductWeightView from './components/CheckProductWeightView';
@@ -13,25 +13,30 @@ const useStyles = makeStyles((theme) => ({
     // justifyContent: 'space-between'
   },
   container: {
-    paddingBottom: 10,
-    marginBottom: 99
+    margin: 10,
   },
 }));
 
 function App() {
-  const styles = useStyles
+  const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Container style={styles.container}>
+      <Container className={styles.container}>
+        <h2>Add Inventory</h2>
         <AddInventoryView />
       </Container>
-      <Container style={styles.container}>
-        <MoveInventoryView/>
+
+      <Divider variant="middle" />
+      <Container className={styles.container}>
+        <h2>Move Inventory</h2>
+        <MoveInventoryView />
       </Container>
-      <Container>
+
+      <Divider variant="middle" />
+      <Container className={styles.container}>
+        <h2>Check Inventory</h2>
         <CheckProductWeightView />
-    
       </Container>
 
     </div>
