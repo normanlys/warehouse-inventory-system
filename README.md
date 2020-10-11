@@ -79,3 +79,4 @@ Design and draft system specifications
 7. Use better git working flow such as git-flow for better version management
 8. Find a way to validate list of JSONs
 9. Support pagination for GET product count API
+10. Write more unit test to cover all cases
