@@ -1,22 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { AppBar, Container, Typography } from '@material-ui/core';
 import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 
 import './App.css';
-import { getProductCount, getGreetings } from './APIService';
-import QuantityTable from './components/QuantityTable';
+import CheckProductWeightView from './components/CheckProductWeightView';
 import AddInventoryView from './components/AddInventoryView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flex: 1,
-    padding:10
+    padding:10,
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   appBar: {
     // theme.mixins.toolbar,
   },
   title: {
     flexGrow: 1,
+  },
+  container: {
+    padding: 10
   },
 }));
 
@@ -38,7 +42,8 @@ function App() {
         {/* <MoveInventoryButton/> */}
       </Container>
       <Container>
-        <QuantityTable />
+        <CheckProductWeightView />
+
       </Container>
 
     </div>

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function QuantityTable() {
+export default function CheckProductWeightView() {
 
   const classes = useStyles();
   const [code, setCode] = React.useState("")
