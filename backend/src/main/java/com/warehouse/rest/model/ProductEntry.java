@@ -25,7 +25,7 @@ public class ProductEntry
     @NonNull
     public Integer weight;
 
-    public ProductEntry() {}
+    private ProductEntry() {}
 
     public ProductEntry(ProductEntryId id, Integer weight)
     {

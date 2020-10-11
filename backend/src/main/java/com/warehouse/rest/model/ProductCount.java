@@ -7,7 +7,9 @@ public class ProductCount implements Serializable
     private static final long serialVersionUID = -2033400011313800667L;
 
     public String location;
-    public Integer weight;    
+    public Integer weight;   
+    
+    private ProductCount() {}
 
     public ProductCount(String location, Integer weight)
     {
