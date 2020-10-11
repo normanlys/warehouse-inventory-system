@@ -1,7 +1,6 @@
 import React from 'react';
-import Modal from '@material-ui/core/Modal';
 import Papa from 'papaparse';
-import { putProductEntry } from '../APIService';
+import { putProductEntries } from '../APIService';
 import { Button, TextField, Grid } from '@material-ui/core';
 
 export default function AddInventoryView() {
@@ -27,17 +26,29 @@ export default function AddInventoryView() {
     Papa.parse(file, {
       header: true,
       complete: (results) => {
-        results.data.forEach(e => {
-          if (e.weight && parseInt(e.weight) && e.name && e.code) {
-            putProductEntry(e.code, location, e.name, parseInt(e.weight))
-              .then(() => {
-                alert('Successfully upload CSV')
-              })
-              .catch(err => alert(err))
-          } else {
-            alert('Incorrect format or missing data')
-          }
-        })
+        const entries = results.data
+          .filter(e => {
+            return e.weight && parseInt(e.weight) && e.name && e.code
+          })
+          .map(e => {
+            return {
+              weight: parseInt(e.weight),
+              name: e.name,
+              code: e.code,
+              location: location
+            }
+          })
+        
+        if (entries.length == 0) {
+          alert('Incorrect format or missing data')
+          return
+        }
+
+        putProductEntries(entries)
+          .then(() => {
+            alert('Successfully upload CSV')
+          })
+          .catch(err => alert(err))
       }
     })
   }

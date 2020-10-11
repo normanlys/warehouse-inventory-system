@@ -17,26 +17,16 @@ export function getProductCount(code) {
     .then(res => res.json())
 }
 
-export function putProductEntry(code, location, name, weight) {
+export function putProductEntries(entries) {
   const url = getURL('/product-entry')
-  console.log({
-    code,
-    location,
-    name,
-    weight
-  })
+  
   return fetch(url, {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      code,
-      location,
-      name,
-      weight
-    })
+    body: JSON.stringify(entries)
   })
     .then(res => {
       if (!res.ok) {

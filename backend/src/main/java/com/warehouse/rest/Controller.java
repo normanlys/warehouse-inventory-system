@@ -2,33 +2,28 @@ package com.warehouse.rest;
 
 import com.warehouse.rest.model.*;
 
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.sql.Array;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
 
 @RestController
 @RequestMapping("/api")
 public class Controller 
 {
 
-    private ProductEntryRepository repository;
+    private ProductEntryRepository entryRepository;
+    private ProductRepository productRepository;
 
-    public Controller(ProductEntryRepository repository)
+    public Controller(ProductEntryRepository entryRepository, ProductRepository productRepository)
     {
-        this.repository = repository;
+        this.entryRepository = entryRepository;
+        this.productRepository = productRepository;
     }
     
     @GetMapping("/")
@@ -39,29 +34,51 @@ public class Controller
 
 
     @GetMapping("/product-count/{code}")
-    ResponseEntity<List<GetProductCountResponse>> getProductCount(@PathVariable String code)
+    ResponseEntity<List<ProductCount>> getProductCount(@PathVariable String code)
     {
-        List<ProductEntry> entries = repository.findByCode(code);
-        List<GetProductCountResponse> result = entries.stream()
-            .map( e -> new GetProductCountResponse(e.location, e.weight))
+        List<ProductEntry> entries = entryRepository.findByCode(code);
+        List<ProductCount> result = entries.stream()
+            .map( e -> new ProductCount(e.location, e.weight))
             .collect(Collectors.toList());
         return ResponseEntity.ok().body(result);
     }
 
     @CrossOrigin(origins = "*")
 	@PutMapping("/product-entry")
-    ResponseEntity<?> createProductEntry(@Valid @RequestBody ProductEntry productEntry)
+    ResponseEntity<?> createProductEntry(@Valid @RequestBody List<@Valid ProductEntryUpdate> productEntryUpdates)
     {
-        ProductEntryId id = new ProductEntryId(productEntry.code, productEntry.location);
-        Optional<ProductEntry> existingEntry = repository.findById(id);
-        if (existingEntry.isPresent())
-        {
-            ProductEntry newValue = existingEntry.get();
-            newValue.weight += productEntry.weight;
-            repository.save(newValue);
-        } else {
-            repository.save(productEntry);
-        }
+        productEntryUpdates.stream()
+            .forEach( productEntryUpdate -> {
+                ProductEntryId id = new ProductEntryId(productEntryUpdate.code, productEntryUpdate.location);
+                Optional<ProductEntry> existingEntry = entryRepository.findById(id);
+                if (existingEntry.isPresent())
+                {
+                    ProductEntry newValue = existingEntry.get();
+                    newValue.weight += productEntryUpdate.weight;
+                    entryRepository.save(newValue);
+                } 
+                else 
+                {
+                    entryRepository.save(new ProductEntry(id, productEntryUpdate.weight));
+                }
+
+                Optional<Product> existingProduct = productRepository.findById(productEntryUpdate.code);
+                if (existingProduct.isPresent())
+                {
+                    Product value = existingProduct.get();
+                    if (value.name != productEntryUpdate.name)
+                    {
+                        value.name = productEntryUpdate.name;
+                        productRepository.save(value);
+                    }
+                } 
+                else 
+                {
+                    Product newProduct = new Product(productEntryUpdate.code, productEntryUpdate.name);
+                    productRepository.save(newProduct);
+                }
+            });
+        
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -69,25 +86,25 @@ public class Controller
     ResponseEntity<?> moveProductEntry(@Valid @RequestBody MoveProductEntry moveEntry) throws Exception
     {
         ProductEntryId fromId = new ProductEntryId(moveEntry.code, moveEntry.fromLocation);
-        Optional<ProductEntry> fromEntry = repository.findById(fromId);
+        Optional<ProductEntry> fromEntry = entryRepository.findById(fromId);
 
         ProductEntryId toId = new ProductEntryId(moveEntry.code, moveEntry.toLocation);
-        Optional<ProductEntry> toEntry = repository.findById(toId);
+        Optional<ProductEntry> toEntry = entryRepository.findById(toId);
 
         if (fromEntry.isPresent())
         {
             ProductEntry fromValue = fromEntry.get();
             Integer diff = Math.min(moveEntry.weight, fromValue.weight);
             fromValue.weight -= diff;
-            repository.save(fromValue);
+            entryRepository.save(fromValue);
 
             if (toEntry.isPresent()) {
                 ProductEntry toValue = toEntry.get();
                 toValue.weight += diff;
-                repository.save(toValue);
+                entryRepository.save(toValue);
             } else {
-                ProductEntry newEntry = new ProductEntry(toId, fromValue.name, diff);
-                repository.save(newEntry);
+                ProductEntry newEntry = new ProductEntry(toId, diff);
+                entryRepository.save(newEntry);
             }
 
         } else {
