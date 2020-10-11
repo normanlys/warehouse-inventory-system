@@ -19,7 +19,7 @@ yarn install
 
 ## Backend
 
-To server started at localhost:8080
+To start server at localhost:8080
 ```
 cd backend
 ./mvnw spring-boot:run
