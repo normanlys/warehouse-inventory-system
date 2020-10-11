@@ -38,11 +38,33 @@ export function putProductEntry(code, location, name, weight) {
       weight
     })
   })
-  .then(res => {
-    if (!res.ok) {
+    .then(res => {
+      if (!res.ok) {
         throw new Error(res.statusText)
       }
+    })
+}
+
+export function moveProductEntry(code, weight, fromLocation, toLocation) {
+  const url = getURL('/product-entry')
+  return fetch(url, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      code,
+      fromLocation,
+      toLocation,
+      weight
+    })
   })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.statusText)
+      }
+    })
 }
 
 export function getGreetings() {

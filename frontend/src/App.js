@@ -1,10 +1,11 @@
-import React, { useEffect, useLayoutEffect } from 'react';
-import { AppBar, Container, Typography } from '@material-ui/core';
-import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
+import React from 'react';
+import { AppBar, Container } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import './App.css';
 import CheckProductWeightView from './components/CheckProductWeightView';
 import AddInventoryView from './components/AddInventoryView';
+import MoveInventoryView from './components/MoveInventoryView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,23 +28,15 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const styles = useStyles
 
-
   return (
     <div className={styles.root}>
-      {/* <Container>
-      <AppBar>
-        <Typography variant="h6">
-          News
-        </Typography>
-      </AppBar>
-      </Container> */}
       <Container style={styles.container}>
         <AddInventoryView />
-        {/* <MoveInventoryButton/> */}
+        <MoveInventoryView/>
       </Container>
       <Container>
         <CheckProductWeightView />
-
+    
       </Container>
 
     </div>
