@@ -4,7 +4,7 @@
 
 ## Requires the following tools
 
-- JDK
+- openJDK
 - maven
 - yarn
 
@@ -67,3 +67,4 @@ Design and draft system specifications
 4. Learn Java optional syntax for cleaner code
 5. Use typescript in frontend to code quality
 6. Use MySQL as persistent data storage
+7. Use better git working flow such as git-flow for better version management
