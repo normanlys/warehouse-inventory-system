@@ -25,6 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.warehouse.rest.model.ProductCount;
 import com.warehouse.rest.model.ProductEntry;
 import com.warehouse.rest.model.ProductEntryRepository;
@@ -72,16 +73,18 @@ class RestApplicationTests {
 		MvcResult result = mvc.perform(MockMvcRequestBuilders.get("/api/product-count/" + productCode).accept("application/json"))
 			.andExpect(status().isOk())
 			.andReturn();
+		
+		Gson gson = new Gson();
+		ProductCount[] actual = gson.fromJson(result.getResponse().getContentAsString(), ProductCount[].class);
+		// ObjectMapper mapper = new ObjectMapper();
+		// List<ProductCount> actual = mapper.readValue(result.getResponse().getContentAsString(), new TypeReference<ArrayList<ProductCount>>(){});
 
-		ObjectMapper mapper = new ObjectMapper();
-		List<ProductCount> actual = mapper.readValue(result.getResponse().getContentAsString(), new TypeReference<ArrayList<ProductCount>>(){});
+		assertEquals(2, actual.length);
 
-		assertEquals(2, actual.size());
+		assertEquals(1, actual[0].weight);
+		assertEquals(location0, actual[0].location);
 
-		assertEquals(1, actual.get(0).weight);
-		assertEquals(location0, actual.get(0).location);
-
-		assertEquals(1, actual.get(1).weight);
-		assertEquals(location1, actual.get(1).location);
+		assertEquals(1, actual[1].weight);
+		assertEquals(location1, actual[1].location);
 	}
 }
