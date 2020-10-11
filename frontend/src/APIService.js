@@ -14,6 +14,7 @@ export function getProductCount(code) {
             'Content-Type': 'application/json',
         }
     })
+    .then(res => res.json())
 }
 
 export function getGreetings() {

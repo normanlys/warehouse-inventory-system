@@ -21,16 +21,7 @@ export default function QuantityTable() {
 
   const classes = useStyles();
   const [code, setCode] = React.useState("")
-  const [rows, setRows] = React.useState([{ location: "loc", weight: 1 }]);
-
-  useLayoutEffect(() => {
-    getProductCount('p2')
-      .then(res => res.json())
-      .then(json => {
-        setRows(json)
-      })
-      .catch(err => console.log(err))
-  }, [])
+  const [rows, setRows] = React.useState([]);
 
   const onCheckButtonClick = () => {
     if (code == "") {
