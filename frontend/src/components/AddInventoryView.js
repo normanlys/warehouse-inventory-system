@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from '@material-ui/core/Modal';
 import Papa from 'papaparse';
 import { putProductEntry } from '../APIService';
-import { Button, TextField } from '@material-ui/core';
+import { Button, TextField, Grid } from '@material-ui/core';
 
 export default function AddInventoryView() {
   const [open, setOpen] = React.useState(false);
@@ -48,22 +48,27 @@ export default function AddInventoryView() {
   }
 
   return (
-    <div>
-      <TextField id="outlined-basic"
-        label="Location"
-        variant="outlined"
-        onChange={handleLocationChange}
-      />
+    <Grid container spacing={2} alignItems='center'>
+      <Grid item>
+        <TextField id="outlined-basic"
+          label="Location"
+          variant="outlined"
+          onChange={handleLocationChange}
+        />
+      </Grid>
 
-      <Button variant="contained" component="label">
-        Upload CSV
-      <input type="file" style={{ display: "none" }}
-          onChange={handleFilesUpload}
-          onClick={handleUploadButtonClick} />
-      </Button>
-      
-      <p>CSV must contains code, weight and name</p>
+      <Grid item>
+        <Button variant="contained" component="label">
+          Upload CSV
+          <input type="file" style={{ display: "none" }}
+            onChange={handleFilesUpload}
+            onClick={handleUploadButtonClick} />
+        </Button>
+      </Grid>
 
-    </div>
+      <Grid item>
+        <p>*CSV must contains code, weight and name</p>
+      </Grid>
+    </Grid>
   )
 }

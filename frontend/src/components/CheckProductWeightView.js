@@ -54,7 +54,7 @@ export default function CheckProductWeightView() {
   }
 
   return (
-    <Grid container spacing={2} >
+    <Grid container spacing={2} alignItems='center'>
       <Grid item>
         <TextField id="outlined-basic"
           label="Product Code"
