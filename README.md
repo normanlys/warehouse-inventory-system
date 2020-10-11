@@ -58,6 +58,7 @@ Design and draft system specifications
 - Handle exceptions on both frontend and backend
 - Write down potential improvements
 - Write documentation
+- Baffled by how spring boot does not support validation of list of JSONs
 
 # Potential Improvements
 
@@ -68,3 +69,5 @@ Design and draft system specifications
 5. Use typescript in frontend to code quality
 6. Use MySQL as persistent data storage
 7. Use better git working flow such as git-flow for better version management
+8. Find a way to validate list of JSONs
+9. Support pagination for GET product count API
