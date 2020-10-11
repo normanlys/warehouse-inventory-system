@@ -38,6 +38,13 @@ public class Controller
         // repository.save(p1);
         // repository.save(p0y);
     }
+    
+    @GetMapping("/")
+    ResponseEntity<String> greeting() 
+    {
+        return ResponseEntity.ok("hello world");
+    }
+
 
     @GetMapping("/product-count/{code}")
     ResponseEntity<List<GetProductCountResponse>> getProductCount(@PathVariable String code)
