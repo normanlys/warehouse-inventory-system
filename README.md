@@ -80,3 +80,7 @@ Design and draft system specifications
 8. Find a way to validate list of JSONs
 9. Support pagination for GET product count API
 10. Write more unit test to cover all cases
+11. Logging
+    1.   all incoming requests and outgoing responses
+    2.   all function calls
+    3.   all database operations
