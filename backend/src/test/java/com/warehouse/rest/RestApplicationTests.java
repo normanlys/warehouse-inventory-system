@@ -76,8 +76,6 @@ class RestApplicationTests {
 		
 		Gson gson = new Gson();
 		ProductCount[] actual = gson.fromJson(result.getResponse().getContentAsString(), ProductCount[].class);
-		// ObjectMapper mapper = new ObjectMapper();
-		// List<ProductCount> actual = mapper.readValue(result.getResponse().getContentAsString(), new TypeReference<ArrayList<ProductCount>>(){});
 
 		assertEquals(2, actual.length);
 
