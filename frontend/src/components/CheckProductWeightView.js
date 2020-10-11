@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import { Button, Container, TextField } from '@material-ui/core';
+import { Button, Container, TextField, Grid } from '@material-ui/core';
 
 import { getProductCount } from '../APIService';
 
@@ -15,6 +15,10 @@ const useStyles = makeStyles({
   table: {
     minWidth: 200,
   },
+  tableHeader: {
+    backgroundColor: 'grey',
+    color: 'white'
+  }
 });
 
 export default function CheckProductWeightView() {
@@ -31,7 +35,7 @@ export default function CheckProductWeightView() {
     getProductCount(code)
       .then(json => {
         if (json.length == 0) {
-          setRows([{location: "No Products Found"}])
+          setRows([{ location: "No Products Found" }])
         } else {
           setRows(json)
         }
@@ -50,23 +54,27 @@ export default function CheckProductWeightView() {
   }
 
   return (
-    <div>
-      <TextField id="outlined-basic"
-        label="Product Code"
-        variant="outlined"
-        onChange={handleProductCodeChange}
-        onKeyDown={onEnter} />
+    <Grid container spacing={2} >
+      <Grid item>
+        <TextField id="outlined-basic"
+          label="Product Code"
+          variant="outlined"
+          onChange={handleProductCodeChange}
+          onKeyDown={onEnter} />
+      </Grid>
 
-      <Button variant="contained" onClick={onCheckButtonClick}>
-        Check Product Weight
+      <Grid item>
+        <Button variant="contained" onClick={onCheckButtonClick}>
+          Check Product Weight
       </Button>
+      </Grid>
 
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Location</TableCell>
-              <TableCell align="right">Weight</TableCell>
+              <TableCell className={classes.tableHeader}>Location</TableCell>
+              <TableCell className={classes.tableHeader} align="right">Weight</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -81,6 +89,6 @@ export default function CheckProductWeightView() {
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Grid>
   );
 }
