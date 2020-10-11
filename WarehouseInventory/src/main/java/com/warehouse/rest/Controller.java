@@ -1,7 +1,6 @@
 package com.warehouse.rest;
 
 import com.warehouse.rest.model.*;
-import com.warehouse.rest.json.*;
 
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.http.HttpStatus;
