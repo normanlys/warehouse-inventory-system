@@ -7,11 +7,7 @@ import AddInventoryView from './components/AddInventoryView';
 import MoveInventoryView from './components/MoveInventoryView';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'space-between'
-  },
+  root: {},
   container: {
     margin: 10,
   },
