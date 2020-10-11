@@ -31,6 +31,8 @@ export default function AddInventoryView() {
           if (e.weight && parseInt(e.weight) && e.name && e.code) {
             putProductEntry(e.code, location, e.name, parseInt(e.weight))
               .catch(err => alert(err))
+          } else {
+            alert('Incorrect format or missing data')
           }
         })
       }
