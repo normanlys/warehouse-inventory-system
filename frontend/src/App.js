@@ -14,23 +14,23 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function App() {
-  const styles = useStyles();
+  const classes = useStyles();
 
   return (
-    <div className={styles.root}>
-      <Container className={styles.container}>
+    <div className={classes.root}>
+      <Container className={classes.container}>
         <h2>Add Inventory</h2>
         <AddInventoryView />
       </Container>
 
       <Divider variant="middle" />
-      <Container className={styles.container}>
+      <Container className={classes.container}>
         <h2>Move Inventory</h2>
         <MoveInventoryView />
       </Container>
 
       <Divider variant="middle" />
-      <Container className={styles.container}>
+      <Container className={classes.container}>
         <h2>Check Inventory</h2>
         <CheckProductWeightView />
       </Container>
