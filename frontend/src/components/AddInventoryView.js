@@ -21,9 +21,13 @@ export default function AddInventoryView() {
   const handleFilesUpload = event => {
     if (location == "") {
       alert("Location cannot be empty")
+      return
     }
-
     const file = event.target.files[0]
+    if (file.type != 'text/csv' || event.target.files.length > 1) {
+      alert('Only accepts 1 CSV file')
+      return
+    }
 
     Papa.parse(file, {
       header: true,
