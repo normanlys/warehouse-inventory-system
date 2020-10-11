@@ -29,15 +29,6 @@ public class Controller
     public Controller(ProductEntryRepository repository)
     {
         this.repository = repository;
-
-        // test data
-        ProductEntry p0 = new ProductEntry("p0", "tko", "product0", 5);
-        // ProductEntry p0y = new ProductEntry("p0y", "tsing yi", "product0", 544);
-        // ProductEntry p1 = new ProductEntry("p1", "tko", "product1", 15);
-
-        repository.save(p0);
-        // repository.save(p1);
-        // repository.save(p0y);
     }
     
     @GetMapping("/")
