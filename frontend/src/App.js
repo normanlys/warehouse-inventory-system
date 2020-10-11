@@ -2,7 +2,6 @@ import React from 'react';
 import { AppBar, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import './App.css';
 import CheckProductWeightView from './components/CheckProductWeightView';
 import AddInventoryView from './components/AddInventoryView';
 import MoveInventoryView from './components/MoveInventoryView';
