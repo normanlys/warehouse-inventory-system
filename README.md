@@ -32,7 +32,7 @@ Since the requirements are not perfectly specific, I have made the following ass
 
 1. When moving inventory, if the weight at the from location is less than the specified, all inventory will be moved without throwing exceptions
 2. Products have unique codes but not unique names, therefore the system identify products solely by code. Names are set at initial insert.
-3. Web app will be used in mobile browsers
+3. Web app will be used on mobile browsers, therefore autolayout is implemented.
 
 # Progress
 ## Day 1
