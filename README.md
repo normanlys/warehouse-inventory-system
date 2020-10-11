@@ -59,6 +59,9 @@ Design and draft system specifications
 - Write down potential improvements
 - Write documentation
 - Baffled by how spring boot does not support validation of list of JSONs
+- Struggle with dependency injections for unit tests
+- Add backend unit tests
+- Gladly discovered GSON library
 
 # Potential Improvements
 
