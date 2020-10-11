@@ -43,12 +43,19 @@ export default function QuantityTable() {
     setCode(e.target.value)
   }
 
+  const onEnter = (e) => {
+    if (e.keyCode == 13) {
+      onCheckButtonClick()
+    }
+  }
+
   return (
     <Container>
       <TextField id="outlined-basic"
         label="Product Code"
         variant="outlined"
-        onChange={handleProductCodeChange} />
+        onChange={handleProductCodeChange}
+        onKeyDown={onEnter} />
 
       <Button onClick={onCheckButtonClick}>
         Check Product Weight
