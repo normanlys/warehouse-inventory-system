@@ -19,11 +19,16 @@ yarn install
 
 ## Backend
 
+To server started at localhost:8080
 ```
 cd backend
 ./mvnw spring-boot:run
+```
 
-// server started at localhost:8080
+To run unit tests
+```
+cd backend
+./mvnw test
 ```
 
 # Assumptions
@@ -31,7 +36,7 @@ cd backend
 Since the requirements are not perfectly specific, I have made the following assumptions based off my understanding of the use case:
 
 1. When moving inventory, if the weight at the from location is less than the specified, all inventory will be moved without throwing exceptions
-2. Products have unique codes but not unique names, therefore the system identify products solely by code. Names are set at initial insert.
+2. Products have unique codes but not unique names, therefore the system identify products solely by code. Names are updated when inventories are added.
 3. Web app will be used on mobile browsers, therefore autolayout is implemented.
 
 # Progress
