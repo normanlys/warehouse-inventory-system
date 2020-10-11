@@ -12,17 +12,12 @@ export default function AddInventoryView() {
     setOpen(true);
   }
 
-  const modalBody = (
-    <p id="simple-modal-description">
-      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-    </p>
-  )
-
   const handleFilesUpload = event => {
     if (location == "") {
       alert("Location cannot be empty")
       return
     }
+
     const file = event.target.files[0]
     if (file.type != 'text/csv' || event.target.files.length > 1) {
       alert('Only accepts 1 CSV file')
@@ -56,22 +51,17 @@ export default function AddInventoryView() {
         label="Location"
         variant="outlined"
         onChange={handleLocationChange}
-        // onKeyDown={onEnter}
-         />
+      />
 
-      <Button variant="contained" component="label">Default
-      <input type="file" style={{ display: "none" }} 
-      onChange={handleFilesUpload} 
-      onClick={handleUploadButtonClick} /> 
+      <Button variant="contained" component="label">
+        Upload CSV
+      <input type="file" style={{ display: "none" }}
+          onChange={handleFilesUpload}
+          onClick={handleUploadButtonClick} />
       </Button>
-      {/* <Modal
-        open={open}
-      // onClose={handleClose}
-      // aria-labelledby="simple-modal-title"
-      // aria-describedby="simple-modal-description"
-      >
-        {modalBody}
-      </Modal> */}
+      
+      <p>CSV must contains code, weight and name</p>
+
     </div>
   )
 }
