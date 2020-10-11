@@ -5,6 +5,7 @@ import { makeStyles, withStyles, Theme } from '@material-ui/core/styles';
 import './App.css';
 import { getProductCount, getGreetings } from './APIService';
 import QuantityTable from './components/QuantityTable';
+import AddInventoryView from './components/AddInventoryView';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,6 +33,10 @@ function App() {
         </Typography>
       </AppBar>
       </Container> */}
+      <Container style={styles.container}>
+        <AddInventoryView />
+        {/* <MoveInventoryButton/> */}
+      </Container>
       <Container>
         <QuantityTable />
       </Container>
