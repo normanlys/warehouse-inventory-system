@@ -6,7 +6,6 @@ import com.warehouse.rest.json.*;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Producer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -17,6 +16,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -56,16 +57,17 @@ public class Controller
         return ResponseEntity.ok().body(result);
     }
 
+    @CrossOrigin(origins = "*")
 	@PutMapping("/product-entry")
-    ResponseEntity<?> createProductEntry(@Validated @RequestBody ProductEntry productEntry)
+    ResponseEntity<?> createProductEntry(@Valid @RequestBody ProductEntry productEntry)
     {
         ProductEntryId id = new ProductEntryId(productEntry.code, productEntry.location);
         Optional<ProductEntry> existingEntry = repository.findById(id);
         if (existingEntry.isPresent())
         {
-            ProductEntry value = existingEntry.get();
-            value.weight += productEntry.weight;
-            repository.save(value);
+            ProductEntry newValue = existingEntry.get();
+            newValue.weight += productEntry.weight;
+            repository.save(newValue);
         } else {
             repository.save(productEntry);
         }

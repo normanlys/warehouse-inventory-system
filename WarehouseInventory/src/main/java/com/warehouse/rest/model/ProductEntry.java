@@ -6,6 +6,8 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
 
 @Data
 @Entity
@@ -15,15 +17,19 @@ import javax.persistence.*;
 @IdClass(ProductEntryId.class)
 public class ProductEntry
 {
+    @NotBlank(message = "code is mandatory")
     @Id
     public String code;
 
+    @NotBlank(message = "location is mandatory")
     @Id
     public String location;
 
+    @NotBlank(message = "name is mandatory")
     @NonNull
     public String name;
 
+    @PositiveOrZero(message = "weight must be positive or zero")
     @NonNull
     public Integer weight;
 
