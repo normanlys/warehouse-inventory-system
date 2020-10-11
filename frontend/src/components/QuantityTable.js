@@ -29,7 +29,6 @@ export default function QuantityTable() {
       return
     }
     getProductCount(code)
-      .then(res => res.json())
       .then(json => {
         if (json.length == 0) {
           setRows([{location: "No Products Found"}])
