@@ -39,7 +39,7 @@ cd target
 // jar file is here
 ```
 
-Note: Use `./mvnw.cmd` instead of `./mvnw` on command prompt on Windows
+Note: If using Windows, Use `./mvnw.cmd` instead of `./mvnw` on command prompt
 
 # Assumptions
 
