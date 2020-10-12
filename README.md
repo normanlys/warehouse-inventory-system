@@ -84,7 +84,7 @@ Design and draft system specifications
 ## Major
 1. Use custom exception object from backend so frontend can show error messages from the server
 2. Ensure all endpoints conforms to HTTP status protocols
-3. Find a way to validate list of JSONs
+3. Find a way to validate list of JSONs on server side to avoid internal server error
 4. Support pagination for GET product count API
 5. Write more unit test to cover all cases
 6. Use Kotlin
