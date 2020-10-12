@@ -88,9 +88,9 @@ Design and draft system specifications
 4. Support pagination for GET product count API
 5. Write more unit test to cover all cases
 6. Use Kotlin
-7. Use typescript in frontend to code quality
+7. Use typescript in frontend to improve code quality
 8.  Logging
-    1.   all incoming requests and outgoing responses
+    1.   all requests and responses on both frontend and backend
     2.   all function calls
     3.   all database operations
 
@@ -101,3 +101,4 @@ Design and draft system specifications
 3. Learn Java optional syntax for cleaner code
 4. Use MySQL as persistent data storage
 5. Use better git working flow such as git-flow for better version management
+6. Ensure all public and private access are appropriately assigned
