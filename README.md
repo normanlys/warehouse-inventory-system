@@ -81,18 +81,23 @@ Design and draft system specifications
 
 # Potential Improvements
 
+## Major
 1. Use custom exception object from backend so frontend can show error messages from the server
-2. Implement unit test on frontend
-3. Implement scheduled house cleaning for backend database in case of insufficent drive space
-4. Learn Java optional syntax for cleaner code
-5. Use typescript in frontend to code quality
-6. Use MySQL as persistent data storage
-7. Use better git working flow such as git-flow for better version management
-8. Find a way to validate list of JSONs
-9. Support pagination for GET product count API
-10. Write more unit test to cover all cases
-11. Logging
+2. Ensure all endpoints conforms to HTTP status protocols
+3. Find a way to validate list of JSONs
+4. Support pagination for GET product count API
+5. Write more unit test to cover all cases
+6. Use Kotlin
+7. Use typescript in frontend to code quality
+8.  Logging
     1.   all incoming requests and outgoing responses
     2.   all function calls
     3.   all database operations
-12.  Use Kotlin
+
+## Minor
+
+1. Implement unit test on frontend
+2. Implement scheduled house cleaning for backend database in case of insufficent drive space
+3. Learn Java optional syntax for cleaner code
+4. Use MySQL as persistent data storage
+5. Use better git working flow such as git-flow for better version management
