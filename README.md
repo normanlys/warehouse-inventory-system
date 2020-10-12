@@ -81,6 +81,8 @@ Design and draft system specifications
 
 # Potential Improvements
 
+If I were to push for a perfect solution, the following items are what I would work on if I had more time.
+
 ## Major
 1. Use custom exception object from backend so frontend can show error messages from the server
 2. Ensure all endpoints conforms to HTTP status protocols
