@@ -1,11 +1,32 @@
 # warehouse-inventory-system
 
+# Challenge
+
+- develop a light version Warehouse Inventory System
+- able to store product data via csv file consumption
+- able to store quantities of such products in different locations via csv file consumption
+- UI to show inventory level of given product code
+- able to transfer inventory from one location to another given amount of quantity and product code via UI
+- Java web application, any framework is fine
+- use a persistent database
+- complete in 3 days
+
+Product attributes include: name, code, weight. E.g. “face mask”, “FM-HKTV01”, 100
+Location is represented by the alphabet without spaces in between. E.g. “TKO”, “CWB”
+
+Bonus
+- using javascript/typescript for UI
+- unit tests
+
+Project should contain a README.md, including:
+1. how to compile, test, start the application
+2. write up a short daily, let us know how you learn / think / try / develop for each day.
+
 # How to run it
 
 ## Requires the following tools
 
 - openJDK
-- maven
 - yarn
 
 ## Frontend
