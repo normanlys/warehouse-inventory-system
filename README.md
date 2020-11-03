@@ -12,6 +12,7 @@
 - complete in 3 days
 
 Product attributes include: name, code, weight. E.g. “face mask”, “FM-01”, 100
+
 Location is represented by the alphabet without spaces in between. E.g. “KLT”, “CWB”
 
 Bonus
